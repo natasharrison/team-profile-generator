@@ -9,7 +9,7 @@ function generateHtml(data) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Team</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="team-profile-generator/dist/style.css" />
+    <link rel="stylesheet" href="./dist/style.css" />
 </head>
 
 <body>
@@ -23,11 +23,11 @@ function generateHtml(data) {
                 <h3 class="card-header">${data.name}</h3>
                 <br>
                 <div class="card-body">
-                    <p>${data.role}</p>
-                    <p>ID #: ${data.id}</p>
-                    <p><a href="mailto:${data.email}">Email: ${data.email}</a></p>
-                    <p>Office #: ${data.office}</p>
-                    <p><a href="https://github.com/${data.github}">Github</a></p>
+                    <div class ="role">${data.role}</div>
+                    <p>ID: # ${data.id}</p>
+                    <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
+                    <p>Office: # ${data.office}</p>
+                    <p>GitHub: <a href="https://github.com/${data.github}">${data.github}</a></p>
                     <p>School: ${data.school} </p>
                 </div>
             </div>

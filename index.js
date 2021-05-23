@@ -52,21 +52,19 @@ const questions = [
     message: "Would you like to enter another team member?"
   }
   // if yes, repeat questions 
+  // if no, generate html
 ];
 
-// // function to write HTML file using the user input
-// function writeToFile(fileName, data) {
-//   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-// }
+// function to write HTML file using the user input
+function writeToFile(fileName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
 
 function initializeProfile() {
   inquirer.prompt(questions).then(inquirerResponses => {
-    // console.log('Generating HTML...');
-    // writeToFile('profile.html', generateHtml({ ...inquirerResponses }));
+    console.log('Generating HTML...');
+    writeToFile('profile.html', generateHtml({ ...inquirerResponses }));
   });
 };
-
-
-// generateHtml();
 
 initializeProfile();

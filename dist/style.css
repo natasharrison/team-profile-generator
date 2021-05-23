@@ -18,6 +18,9 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
 }
+.role {
+  text-align: center;
+}
 
 /* cards */
 .card {
@@ -34,6 +37,7 @@ body {
   padding: 10px 15px;
   text-shadow: 1px 1px #a6a6b0;
   border-radius: 15px;
+  text-align: center;
 }
 
 .card-body {
