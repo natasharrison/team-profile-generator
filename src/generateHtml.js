@@ -1,3 +1,5 @@
+const index = require('index.js');
+
 function generateHtml(data) {
     return `
 <!DOCTYPE html>
