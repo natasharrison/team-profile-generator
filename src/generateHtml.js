@@ -1,47 +1,50 @@
 const index = require('index.js');
-
-function generateHtml(data) {
-    return `
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Team</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css" />
-</head>
-
-<body>
-    <header>
-        <h1>My Team</h1>
-    </header>
-
-    <main class="m-5 row justify-content-around">
-         ${data}
-
-        // <div class="col-3">
-        //     <div class="card">
-        //         <h3 class="card-header">${data.name}</h3>
-        //         <br>
-        //         <div class="card-body">
-        //             <div class ="role">${data.role}</div>
-        //             <p>ID: # ${data.id}</p>
-        //             <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
-        //             <p>Office: # ${data.office}</p>
-        //             <p>GitHub: <a href="https://github.com/${data.github}">${data.github}</a></p>
-        //             <p>School: ${data.school} </p>
-        //         </div>
-        //     </div>
-        // </div>
-
-    </main>
-</body>
-  `;
+function greeter() {
+  console.log('Hello');
 }
 
-generateHtml();
+function generateHtml(data) {
+  greeter();
+  console.log(data);
+//     return `
+// <!DOCTYPE html>
+// <html lang="en">
+
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+//     <title>My Team</title>
+//     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+//     <link rel="stylesheet" href="./style.css" />
+// </head>
+
+// <body>
+//     <header>
+//         <h1>My Team</h1>
+//     </header>
+
+//     <main class="m-5 row justify-content-around">
+//          ${data}
+//     </main>
+// </body>
+//   `;
+}
+
+// // function to write HTML file using the user input
+// function writeToFile(fileName, data) {
+//   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+// }
+
+// function initializeProfile() {
+//   inquirer.prompt(questions).then(inquirerResponses => {
+//     if (inquirerResponses.repeat === true) {
+//       initializeProfile() 
+//     } else {
+//     console.log('Generating HTML...');
+//     writeToFile('./dist/profile.html', generateHtml({ ...inquirerResponses }));
+//     }
+//   });
+// };
 
 module.exports = generateHtml;

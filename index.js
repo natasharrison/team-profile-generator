@@ -3,10 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 const Profile = require('./lib/Profile');
-const generateHtml = require('./src/generateHtml');
 const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const generateHtml = require('./src/generateHtml');
 
 // array of questions for user input 
 const questions = [
@@ -113,6 +113,7 @@ const questions = [
 function writeToFile(fileName, data) {
   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
+generateHtml('anything');
 
 function initializeProfile() {
   inquirer.prompt(questions).then(inquirerResponses => {
@@ -131,17 +132,27 @@ const intern1 = new Intern(inquirerResponses.name, inquirerResponses.id, inquire
 const intern2 = new Intern("Jane Doe", 2, "janedoe@msn.com", "Texas A&M University");
 allEmployees.push(intern1);
 allEmployees.push(intern2);
+
 for(var i = 0; i <allEmployees.length; i++){
     const newMemberTemp = `
-    <div>
-    <p>${allEmployees[i].name}</p>
-     <p>${allEmployees[i].id}</p>
-      <p>${allEmployees[i].email}</p>
-      </div>`
+    <div class="col-3">
+            <div class="card">
+                <h3 class="card-header">${allEmployees[i].name}</h3>
+                <br>
+                <div class="card-body">
+                    <div class ="role">${allEmployees.role}</div>
+                    <p>ID: # ${allEmployees.id}</p>
+                    <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
+                    <p>Office: # ${allEmployees.office}</p>
+                    <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
+                    <p>School: ${allEmployees.school} </p>
+                </div>
+            </div>
+        </div>`
 data = data + newMemberTemp;
 }
 
-fs.writeFileSync("./dist/profile.html", generateHtml(data));
+// fs.writeFileSync("./dist/profile.html", generateHtml(data));
 
 
 console.log(allEmployees);
