@@ -4,6 +4,9 @@ const path = require('path');
 const inquirer = require('inquirer');
 const Profile = require('./lib/Profile');
 const generateHtml = require('./src/generateHtml');
+const Employee = require('./lib/Employee');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
 // array of questions for user input 
 const questions = [
@@ -122,4 +125,24 @@ function initializeProfile() {
   });
 };
 
+const allEmployees = [];
+let data = '';
+const intern1 = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.school); 
+const intern2 = new Intern("Jane Doe", 2, "janedoe@msn.com", "Texas A&M University");
+allEmployees.push(intern1);
+allEmployees.push(intern2);
+for(var i = 0; i <allEmployees.length; i++){
+    const newMemberTemp = `
+    <div>
+    <p>${allEmployees[i].name}</p>
+     <p>${allEmployees[i].id}</p>
+      <p>${allEmployees[i].email}</p>
+      </div>`
+data = data + newMemberTemp;
+}
+
+fs.writeFileSync("./dist/profile.html", generateHtml(data));
+
+
+console.log(allEmployees);
 initializeProfile();

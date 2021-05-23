@@ -42,4 +42,6 @@ function generateHtml(data) {
   `;
 }
 
+generateHtml();
+
 module.exports = generateHtml;
