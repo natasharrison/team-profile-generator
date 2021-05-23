@@ -1,0 +1,46 @@
+header {
+  padding: 80px 35px;
+  background-image: url("./images/team-graphic.JPG");
+  background-size: cover;
+  background-position: 80%;
+  background-attachment: fixed;
+}
+
+h1 {
+  color: #333a40;
+  text-shadow: 1px 1px #a6a6b0;
+}
+
+body {
+  background-color: #f4a483;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
+/* cards */
+.card {
+  padding: 15px;
+  border-radius: 15px;
+  border: 3px solid #333a40;
+  background: #f07a19;
+  box-shadow: 5px 5px #a6a6b0;
+}
+
+.card-header {
+  color: #333a40;
+  background: antiquewhite;
+  padding: 10px 15px;
+  text-shadow: 1px 1px #a6a6b0;
+  border-radius: 15px;
+}
+
+.card-body {
+  padding: 2.5%;
+  color: #333a40;
+  border-radius: 15px;
+  /* how do you make the answers not bold? */
+  font-weight: bold;
+  background: antiquewhite;
+}
