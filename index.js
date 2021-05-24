@@ -2,11 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const Profile = require('./lib/Profile');
-const Employee = require('./lib/Employee');
-const Intern = require('./lib/Intern');
-const Manager = require('./lib/Manager');
-const generateHtml = require('./src/generateHtml');
+// const Profile = require('./lib/Profile');
+// const Employee = require('./lib/Employee');
+// const Intern = require('./lib/Intern');
+// const Manager = require('./lib/Manager');
 
 // array of questions for user input 
 const questions = [
@@ -68,7 +67,7 @@ const questions = [
         return false;
       }
     },
-   when: (answers) => answers.role === 'manager'
+    when: (answers) => answers.role === 'manager'
   },
   // only for engineer
   {
@@ -82,7 +81,7 @@ const questions = [
         console.log('Please enter the employee GitHub username!');
         return false;
       }
-    }, 
+    },
     when: (answers) => answers.role === 'engineer'
 
   },
@@ -98,62 +97,86 @@ const questions = [
         console.log('Please enter the name of the school!');
         return false;
       }
-    }, 
-       when: (answers) => answers.role === 'intern'
+    },
+    when: (answers) => answers.role === 'intern'
   },
   {
     type: 'confirm',
     name: 'repeat',
     message: "Would you like to enter another team member?",
     default: false
-  }, 
+  },
 ];
 
 // function to write HTML file using the user input
 function writeToFile(fileName, data) {
   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
-generateHtml('anything');
 
 function initializeProfile() {
   inquirer.prompt(questions).then(inquirerResponses => {
     if (inquirerResponses.repeat === true) {
-      initializeProfile() 
+      initializeProfile()
     } else {
-    console.log('Generating HTML...');
-    writeToFile('./dist/profile.html', generateHtml({ ...inquirerResponses }));
+      console.log('Generating HTML...');
+      writeToFile('./dist/profile.html', generateHtml({ ...inquirerResponses }));
     }
   });
 };
 
-const allEmployees = [];
-let data = '';
-const intern1 = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.school); 
-const intern2 = new Intern("Jane Doe", 2, "janedoe@msn.com", "Texas A&M University");
-allEmployees.push(intern1);
-allEmployees.push(intern2);
+function generateHtml(data) {
+  return `
+<!DOCTYPE html>
+<html lang="en">
 
-for(var i = 0; i <allEmployees.length; i++){
-    const newMemberTemp = `
-    <div class="col-3">
-            <div class="card">
-                <h3 class="card-header">${allEmployees[i].name}</h3>
-                <br>
-                <div class="card-body">
-                    <div class ="role">${allEmployees.role}</div>
-                    <p>ID: # ${allEmployees.id}</p>
-                    <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
-                    <p>Office: # ${allEmployees.office}</p>
-                    <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
-                    <p>School: ${allEmployees.school} </p>
-                </div>
-            </div>
-        </div>`
-data = data + newMemberTemp;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>My Team</h1>
+    </header>
+
+    <main class="m-5 row justify-content-around">
+         ${data}
+    </main>
+</body>
+  `;
+};
+
+// const allEmployees = [];
+// let data = '';
+// const intern1 = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.school);
+// const intern2 = new Intern("Jane Doe", 2, "janedoe@msn.com", "Texas A&M University");
+// allEmployees.push(intern1);
+// allEmployees.push(intern2);
+
+// for (var i = 0; i < allEmployees.length; i++) {
+//   const newMemberTemp = `
+//     <div class="col-3">
+//             <div class="card">
+//                 <h3 class="card-header">${allEmployees[i].name}</h3>
+//                 <br>
+//                 <div class="card-body">
+//                     <div class ="role">${allEmployees.role}</div>
+//                     <p>ID: # ${allEmployees.id}</p>
+//                     <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
+//                     <p>Office: # ${allEmployees.office}</p>
+//                     <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
+//                     <p>School: ${allEmployees.school} </p>
+//                 </div>
+//             </div>
+//         </div>`
+//   data = data + newMemberTemp;
+// }
 
 // fs.writeFileSync("./dist/profile.html", generateHtml(data));
 
-
-console.log(allEmployees);
+generateHtml();
 initializeProfile();

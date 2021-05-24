@@ -4,11 +4,11 @@ const Manager = require('../lib/Manager');
 const Employee = require('../lib/Employee');
 
 test('creates a intern object', () => {
-    const intern = new Intern ('Natasha', 2, 'natasharrison@gmail.com');
+    const intern = new Intern ('Natasha', 2, 'natasharrison@gmail.com', 'Intern', 'arizona');
 
-    expect(intern.name).toBe(expect.any(Object));
-    expect(intern.id).toBe(expect.any(Number));
-    expect(intern.email).toBe(expect.any(Object)); 
-    expect(intern.role).toBe('intern');
-    expect(intern.school).toBe(expect.any(Object));
+    expect(intern.name).toEqual(expect.any(String));
+    expect(intern.id).toEqual(expect.any(Number));
+    expect(intern.email).toEqual(expect.any(String)); 
+    expect(intern.role).toEqual('Intern');
+    expect(intern.school).toEqual(expect.any(String));
 }); 
