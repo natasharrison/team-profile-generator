@@ -124,8 +124,35 @@ function initializeProfile() {
   });
 };
 
-function generateHtml(data) {
-  return `
+function generateHtml() {
+const allEmployees = [];
+let data = '';
+const newIntern = new Intern(data.name, data.id, data.email, data.role, data.school);
+const newEngineer = new Engineer(data.name, data.id, data.email, data.role, data.github);
+const newManager = new Manager (data.name, data.id, data.email, data.role, data.office); 
+
+allEmployees.push(newIntern, newManager, newEngineer);
+console.log(allEmployees);
+for (var i = 0; i < allEmployees.length; i++) {
+  const newMemberTemp = `
+    <div class="col-3">
+            <div class="card">
+                <h3 class="card-header">${allEmployees[i].name}</h3>
+                <br>
+                <div class="card-body">
+                    <div class ="role">${allEmployees.role}</div>
+                    <p>ID: # ${allEmployees.id}</p>
+                    <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
+                    <p>Office: # ${allEmployees.office}</p>
+                    <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
+                    <p>School: ${allEmployees.school} </p>
+                </div>
+            </div>
+        </div>`
+  data = data + newMemberTemp;
+}
+
+return `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,34 +176,6 @@ function generateHtml(data) {
 </body>
   `;
 };
-
-const allEmployees = [];
-let data = '';
-const newIntern = new Intern(data.name, data.id, data.email, data.role, data.school);
-const newEngineer = new Engineer(data.name, data.id, data.email, data.role, data.github);
-const newManager = new Manager (data.name, data.id, data.email, data.role, data.office); 
-
-allEmployees.push(newIntern, newManager, newEngineer);
-console.log(allEmployees);
-
-for (var i = 0; i < allEmployees.length; i++) {
-  const newMemberTemp = `
-    <div class="col-3">
-            <div class="card">
-                <h3 class="card-header">${allEmployees[i].name}</h3>
-                <br>
-                <div class="card-body">
-                    <div class ="role">${allEmployees.role}</div>
-                    <p>ID: # ${allEmployees.id}</p>
-                    <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
-                    <p>Office: # ${allEmployees.office}</p>
-                    <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
-                    <p>School: ${allEmployees.school} </p>
-                </div>
-            </div>
-        </div>`
-  data = data + newMemberTemp;
-}
 
 generateHtml();
 initializeProfile();
