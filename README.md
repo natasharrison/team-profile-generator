@@ -18,7 +18,7 @@
 ## Website
 
 [GitHub] https://github.com/natasharrison/team-profile-generator.git
-[Screenify] <iframe src="https://drive.google.com/file/d/1WcsIZy41AX9H7gEQ4ZKcqN3GObUuvZ-R/preview" width="640" height="480"></iframe>
+[Screencastify] <iframe src="https://drive.google.com/file/d/1WcsIZy41AX9H7gEQ4ZKcqN3GObUuvZ-R/preview" width="640" height="480"></iframe>
 
 ## Contribution
 
