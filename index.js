@@ -6,6 +6,7 @@ const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
+const newEmployee = [];
 
 // array of questions for user input 
 const questions = [
@@ -132,7 +133,6 @@ const newEngineer = new Engineer(data.name, data.id, data.email, data.role, data
 const newManager = new Manager (data.name, data.id, data.email, data.role, data.office); 
 
 allEmployees.push(newIntern, newManager, newEngineer);
-console.log(allEmployees);
 for (var i = 0; i < allEmployees.length; i++) {
   const newMemberTemp = `
     <div class="col-3">
