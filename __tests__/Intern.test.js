@@ -9,6 +9,6 @@ test('creates a intern object', () => {
     expect(intern.name).toEqual(expect.any(String));
     expect(intern.id).toEqual(expect.any(Number));
     expect(intern.email).toEqual(expect.any(String)); 
-    expect(intern.role).toEqual('Intern');
+    expect(intern.getRole()).toBe('Intern');
     expect(intern.school).toEqual(expect.any(String));
 }); 
