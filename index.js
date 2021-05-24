@@ -2,11 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-// const Profile = require('./lib/Profile');
-// const Employee = require('./lib/Employee');
-// const Intern = require('./lib/Intern');
-// const Manager = require('./lib/Manager');
-// const Engineer = require('./lib/Engineer');
+const Employee = require('./lib/Employee');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
 
 // array of questions for user input 
 const questions = [
@@ -153,11 +152,12 @@ function generateHtml(data) {
 
 const allEmployees = [];
 let data = '';
-const newIntern = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.school);
-const newEngineer = new Engineer(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.github);
-const newManager = new Manager (inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.office); 
+const newIntern = new Intern(data.name, data.id, data.email, data.role, data.school);
+const newEngineer = new Engineer(data.name, data.id, data.email, data.role, data.github);
+const newManager = new Manager (data.name, data.id, data.email, data.role, data.office); 
 
 allEmployees.push(newIntern, newManager, newEngineer);
+console.log(allEmployees);
 
 for (var i = 0; i < allEmployees.length; i++) {
   const newMemberTemp = `
