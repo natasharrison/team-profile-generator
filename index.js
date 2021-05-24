@@ -6,6 +6,7 @@ const inquirer = require('inquirer');
 // const Employee = require('./lib/Employee');
 // const Intern = require('./lib/Intern');
 // const Manager = require('./lib/Manager');
+// const Engineer = require('./lib/Engineer');
 
 // array of questions for user input 
 const questions = [
@@ -150,33 +151,32 @@ function generateHtml(data) {
   `;
 };
 
-// const allEmployees = [];
-// let data = '';
-// const intern1 = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.school);
-// const intern2 = new Intern("Jane Doe", 2, "janedoe@msn.com", "Texas A&M University");
-// allEmployees.push(intern1);
-// allEmployees.push(intern2);
+const allEmployees = [];
+let data = '';
+const newIntern = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.school);
+const newEngineer = new Engineer(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.github);
+const newManager = new Manager (inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.office); 
 
-// for (var i = 0; i < allEmployees.length; i++) {
-//   const newMemberTemp = `
-//     <div class="col-3">
-//             <div class="card">
-//                 <h3 class="card-header">${allEmployees[i].name}</h3>
-//                 <br>
-//                 <div class="card-body">
-//                     <div class ="role">${allEmployees.role}</div>
-//                     <p>ID: # ${allEmployees.id}</p>
-//                     <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
-//                     <p>Office: # ${allEmployees.office}</p>
-//                     <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
-//                     <p>School: ${allEmployees.school} </p>
-//                 </div>
-//             </div>
-//         </div>`
-//   data = data + newMemberTemp;
-// }
+allEmployees.push(newIntern, newManager, newEngineer);
 
-// fs.writeFileSync("./dist/profile.html", generateHtml(data));
+for (var i = 0; i < allEmployees.length; i++) {
+  const newMemberTemp = `
+    <div class="col-3">
+            <div class="card">
+                <h3 class="card-header">${allEmployees[i].name}</h3>
+                <br>
+                <div class="card-body">
+                    <div class ="role">${allEmployees.role}</div>
+                    <p>ID: # ${allEmployees.id}</p>
+                    <p>Email: <a href="mailto:${allEmployees.email}">${allEmployees.email}</a></p>
+                    <p>Office: # ${allEmployees.office}</p>
+                    <p>GitHub: <a href="https://github.com/${allEmployees.github}">${allEmployees.github}</a></p>
+                    <p>School: ${allEmployees.school} </p>
+                </div>
+            </div>
+        </div>`
+  data = data + newMemberTemp;
+}
 
 generateHtml();
 initializeProfile();
