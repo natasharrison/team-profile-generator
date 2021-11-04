@@ -6,7 +6,7 @@ const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-const newEmployee = [];
+const allEmployees = [];
 
 // array of questions for user input 
 const questions = [
@@ -119,6 +119,15 @@ function initializeProfile() {
     if (inquirerResponses.repeat === true) {
       initializeProfile()
     } else {
+
+      if (inquirerResponses.role === "Intern"){
+      const newIntern = new Intern(inquirerResponses.name, inquirerResponses.id, inquirerResponses.email, inquirerResponses.role, inquirerResponses.school);
+      allEmployees.push(newIntern)
+      }
+      
+
+// const newEngineer = new Engineer(data.name, data.id, data.email, data.role, data.github);
+// const newManager = new Manager (data.name, data.id, data.email, data.role, data.office);
       console.log('Generating HTML...');
       writeToFile('./dist/profile.html', generateHtml({ ...inquirerResponses }));
     }
@@ -126,13 +135,9 @@ function initializeProfile() {
 };
 
 function generateHtml() {
-const allEmployees = [];
-let data = '';
-const newIntern = new Intern(data.name, data.id, data.email, data.role, data.school);
-const newEngineer = new Engineer(data.name, data.id, data.email, data.role, data.github);
-const newManager = new Manager (data.name, data.id, data.email, data.role, data.office); 
 
-allEmployees.push(newIntern, newManager, newEngineer);
+let data = '';
+
 for (var i = 0; i < allEmployees.length; i++) {
   const newMemberTemp = `
     <div class="col-3">

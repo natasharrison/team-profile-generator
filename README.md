@@ -15,10 +15,12 @@
 - CSS
 - populated HTML
 
-## Website
+## Repository
 
 [GitHub] https://github.com/natasharrison/team-profile-generator.git
-[Screencastify] <iframe src="https://drive.google.com/file/d/1WcsIZy41AX9H7gEQ4ZKcqN3GObUuvZ-R/preview" width="640" height="480"></iframe>
+
+## Demo
+<a href="https://drive.google.com/file/d/1WcsIZy41AX9H7gEQ4ZKcqN3GObUuvZ-R/preview"><img src="./dist/images/screenshot.JPG"></a>
 
 ## Contribution
 
